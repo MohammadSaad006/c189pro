@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Shooting Game</title>
+    <!-- Import A-Frame and then AR.js -->
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+  <script src="https://unpkg.com/aframe-physics-extras@0.1.2/dist/aframe-physics-extras.min.js"></script>
+
+  <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+
+  <script src="./js/playerMove.js"></script>
+
+    </head>
+
+    <body>
+        <a-scene id="main" backgroundColor="lightblue" inspector-plugin-recast>
+            <a-assets>
+            <a-asset-item id ="city" src="./assets/city/city.glb"></a-asset-item>
+            <a-asset-item id ="player" src="./assets/player/scene.gltf"></a-asset-item>
+            <a-asset-item id ="gun" src="./assets/gun/scene.gltf"></a-asset-item>
+            </a-assets>
+
+                  <!--Camera and Cursor-->
+                  <a-entity id="cameraIRG" position="0 1 1 " rotation="0 90 0" movement-controls="speed:5" playerMove>
+                    
+                <a-entity
+                        id="camera"
+                        camera
+                        position="50 4 15"
+                        wasd-controls
+                        look-controls="pointerLockEnabled: false"  > 
+
+                        <a-entity id="playermodel" gltf-model="#player" position="0 -1 0" rotation="-30 180 0" scale="0.5 0.5 0.5 "></a-entity>   
+                        <a-entity id="g" gltf-model="#gun" position="0.2ww -0.5 -1.2" rotation="0 90 0" scale="0.06 0.06 0.06 "></a-entity>
+                </a-entity>
+                
+            </a-entity>
+
+            <a-entity light="type: ambient; color: white; intensity:0.5"></a-entity>   
+            <a-entity light="type: directional; color: #EEE; intensity: 1" position="-1 1 0"></a-entity>
+
+            <a-entity id="cityterrain" gltf-model="#city" position="0 0 0" rotation="0 0 0 " scale="0.1 0.1 0.1"></a-entity>
+            
+
+        </a-scene>
+        
+
+    </body>
+
+    </html>
